@@ -3,4 +3,6 @@
 
 root * /srv
 
+log
+
 file_server
