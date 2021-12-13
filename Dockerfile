@@ -42,11 +42,11 @@ RUN adduser --disabled-password --gecos "" --no-create-home caddy \
     && chown -R caddy:caddy ${DATA} \
     && chown -R caddy:caddy ${CONFIG}
 
-ENTRYPOINT ["/sbin/tini", "--", "caddy"]
+ENTRYPOINT ["/sbin/tini", "--"]
 
 USER caddy
 
-CMD ["run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
 
 EXPOSE 3000
 
