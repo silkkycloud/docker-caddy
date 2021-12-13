@@ -45,7 +45,7 @@ ENTRYPOINT ["/sbin/tini", "--", "caddy"]
 
 USER caddy
 
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+CMD ["run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
 
 EXPOSE 3000
 
