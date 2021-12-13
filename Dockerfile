@@ -41,7 +41,7 @@ RUN adduser --disabled-password --gecos "" --no-create-home caddy \
     && chown -R caddy:caddy /etc/caddy \
     && chown -R caddy:caddy /srv \
     && chown -R caddy:caddy ${DATA} \
-    && chown -R caddy:caddy ${CONFIG} \
+    && chown -R caddy:caddy ${CONFIG}
 
 USER caddy
 
