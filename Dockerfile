@@ -18,7 +18,7 @@ RUN apk add --no-cache \
     ca-certificates \
     tini
 
-ADD https://github.com/caddyserver/caddy/releases/download/v${CADDY_VERSION}/caddy_${CADDY_VERSION}_linux_arm64.tar.gz /tmp/caddy.tar.gz
+ADD https://github.com/caddyserver/caddy/releases/download/v${CADDY_VERSION}/caddy_${CADDY_VERSION}_linux_amd64.tar.gz /tmp/caddy.tar.gz
 RUN tar xvfz /tmp/caddy.tar.gz -C /usr/local/bin caddy; \
     rm -rf /tmp/caddy.tar.gz; \
     chmod +x /usr/local/bin/caddy; \
