@@ -43,7 +43,7 @@ RUN adduser --disabled-password --gecos "" --no-create-home caddy \
     && chown -R caddy:caddy ${DATA} \
     && chown -R caddy:caddy ${CONFIG}
 
-ENTRYPONT ["/sbin/tini", "--", "caddy"]
+ENTRYPOINT ["/sbin/tini", "--", "caddy"]
 
 USER caddy
 
