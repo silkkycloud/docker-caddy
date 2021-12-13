@@ -1,0 +1,6 @@
+# Generic file server config, serves from /srv directory
+:3000
+
+root * /srv
+
+file_server
