@@ -31,7 +31,7 @@ RUN mkdir -p /etc/caddy \
     && mkdir -p ${CONFIG}/caddy
 
 # Add default config
-COPY ./Dockerfile /etc/caddy/Caddyfile
+COPY ./Caddyfile /etc/caddy/Caddyfile
 ADD https://raw.githubusercontent.com/caddyserver/dist/master/welcome/index.html /srv/index.html
 
 # Add an unprivileged user and set directory permissions
