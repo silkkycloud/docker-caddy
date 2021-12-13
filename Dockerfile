@@ -21,9 +21,9 @@ RUN apk add --no-cache \
 WORKDIR /caddy
 
 ADD https://github.com/caddyserver/caddy/releases/download/v${CADDY_VERSION}/caddy_${CADDY_VERSION}_linux_arm64.tar.gz /tmp/caddy.tar.gz
-RUN tar xvfz /tmp/caddy.tar.gz -C /usr/bin caddy; \
+RUN tar xvfz /tmp/caddy.tar.gz -C /usr/local/bin caddy; \
     rm -rf /tmp/caddy.tar.gz; \
-    chmod +x /usr/bin/caddy
+    chmod +x /usr/local/bin/caddy
 
 # Create persistent data directories
 RUN mkdir -p /etc/caddy \
@@ -37,7 +37,7 @@ ADD https://raw.githubusercontent.com/caddyserver/dist/master/welcome/index.html
 
 # Add an unprivileged user and set directory permissions
 RUN adduser --disabled-password --gecos "" --no-create-home caddy \
-    && chown -R caddy:caddy /usr/bin/caddy \
+    && chown -R caddy:caddy /usr/local/bin/caddy \
     && chown -R caddy:caddy /etc/caddy \
     && chown -R caddy:caddy /srv \
     && chown -R caddy:caddy ${DATA} \
@@ -45,9 +45,11 @@ RUN adduser --disabled-password --gecos "" --no-create-home caddy \
 
 USER caddy
 
-ENTRYPOINT ["caddy"]
+ENTRYPOINT ["/sbin/tini", "--", "caddy"]
 
 EXPOSE 3000
+
+STOPSIGNAL SIGTERM
 
 # Image metadata
 LABEL org.opencontainers.image.version=${CADDY_VERSION}
