@@ -45,7 +45,7 @@ RUN adduser --disabled-password --gecos "" --no-create-home caddy \
 
 USER caddy
 
-ENTRYPOINT ["/sbin/tini", "--", "caddy"]
+ENTRYPOINT ["caddy"]
 
 EXPOSE 3000
 
